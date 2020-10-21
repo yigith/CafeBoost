@@ -1,0 +1,29 @@
+﻿Solution içerisine CafeBoost.Data adında bir Class Library (.NET STANDARD) türünde bir proje oluşturun ve içersine aşağıdaki bilgileri kullanarak 4 adet class ve 1 adet enum oluşturun.
+
+Urun
+- UrunAd (string)
+- BirimFiyat (decimal)
+> ToString() => Tost (3.00₺)
+
+SiparisDetay
+- UrunAd (string)
+- BirimFiyat (decimal)
+- Adet (int)
+- TutarTL (string-readonly)
+> Tutar() => Adet * BirimFiyat
+
+Siparis
+- MasaNo (int)
+- SiparisDetaylar (List<SiparisDetay>)
+- AcilisZamani (DateTime?)
+- KapanisZamani (DateTime?)
+- Durum (SiparisDurum)
+- ToplamTutarTL (string-readonly)
+> ToplamTutar()
+
+SiparisDurum (Aktif = 0, Odendi = 1, Iptal = 2)
+
+KafeVeri
+- Urunler (List<Urun>)
+- AktifSiparisler (List<Siparis>)
+- GecmisSiparisler (List<Siparis>)
