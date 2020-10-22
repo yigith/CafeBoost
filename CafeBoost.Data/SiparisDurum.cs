@@ -4,7 +4,10 @@ using System.Text;
 
 namespace CafeBoost.Data
 {
-    class SiparisDurum
+    public enum SiparisDurum
     {
+        Aktif = 0, 
+        Odendi = 1, 
+        Iptal = 2
     }
 }
