@@ -67,7 +67,7 @@ namespace CafeBoost.UI
 
         private void tsmiGecmisSiparisler_Click(object sender, EventArgs e)
         {
-            new GecmisSiparislerForm().ShowDialog();
+            new GecmisSiparislerForm(db).ShowDialog();
         }
 
         private void lvwMasalar_DoubleClick(object sender, EventArgs e)
