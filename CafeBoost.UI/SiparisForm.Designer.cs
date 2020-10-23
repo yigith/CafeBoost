@@ -43,6 +43,10 @@
             this.btnAnasayfa = new System.Windows.Forms.Button();
             this.dgvSiparisDetaylar = new System.Windows.Forms.DataGridView();
             this.btnMasaTasi = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSiparisDetaylar)).BeginInit();
             this.SuspendLayout();
@@ -161,6 +165,7 @@
             this.btnSiparisIptal.TabIndex = 11;
             this.btnSiparisIptal.Text = "SİPARİŞİ İPTAL ET";
             this.btnSiparisIptal.UseVisualStyleBackColor = false;
+            this.btnSiparisIptal.Click += new System.EventHandler(this.btnSiparisIptal_Click);
             // 
             // btnOdemeAl
             // 
@@ -173,6 +178,7 @@
             this.btnOdemeAl.TabIndex = 12;
             this.btnOdemeAl.Text = "ÖDEME AL";
             this.btnOdemeAl.UseVisualStyleBackColor = false;
+            this.btnOdemeAl.Click += new System.EventHandler(this.btnOdemeAl_Click);
             // 
             // btnAnasayfa
             // 
@@ -185,6 +191,7 @@
             this.btnAnasayfa.TabIndex = 13;
             this.btnAnasayfa.Text = "ANASAYFAYA DÖN";
             this.btnAnasayfa.UseVisualStyleBackColor = false;
+            this.btnAnasayfa.Click += new System.EventHandler(this.btnAnasayfa_Click);
             // 
             // dgvSiparisDetaylar
             // 
@@ -192,10 +199,19 @@
             this.dgvSiparisDetaylar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSiparisDetaylar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSiparisDetaylar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSiparisDetaylar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSiparisDetaylar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.dgvSiparisDetaylar.Location = new System.Drawing.Point(12, 74);
+            this.dgvSiparisDetaylar.MultiSelect = false;
             this.dgvSiparisDetaylar.Name = "dgvSiparisDetaylar";
             this.dgvSiparisDetaylar.ReadOnly = true;
+            this.dgvSiparisDetaylar.RowHeadersVisible = false;
             this.dgvSiparisDetaylar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSiparisDetaylar.Size = new System.Drawing.Size(482, 436);
             this.dgvSiparisDetaylar.TabIndex = 14;
@@ -211,6 +227,34 @@
             this.btnMasaTasi.TabIndex = 15;
             this.btnMasaTasi.Text = "TAŞI";
             this.btnMasaTasi.UseVisualStyleBackColor = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "UrunAd";
+            this.Column1.HeaderText = "Ürün Adı";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BirimFiyat";
+            this.Column2.HeaderText = "Birim Fiyat";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Adet";
+            this.Column3.HeaderText = "Adet";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "TutarTL";
+            this.Column4.HeaderText = "Tutar";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // SiparisForm
             // 
@@ -261,5 +305,9 @@
         private System.Windows.Forms.Button btnAnasayfa;
         private System.Windows.Forms.DataGridView dgvSiparisDetaylar;
         private System.Windows.Forms.Button btnMasaTasi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

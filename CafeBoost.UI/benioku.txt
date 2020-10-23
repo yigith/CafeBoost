@@ -18,6 +18,7 @@ Siparis
 - AcilisZamani (DateTime?)
 - KapanisZamani (DateTime?)
 - Durum (SiparisDurum)
+- OdenenTutar (decimal)
 - ToplamTutarTL (string-readonly)
 > ToplamTutar()
 
