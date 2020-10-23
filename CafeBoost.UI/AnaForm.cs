@@ -1,10 +1,12 @@
 ﻿using CafeBoost.Data;
 using CafeBoost.UI.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +16,13 @@ namespace CafeBoost.UI
 {
     public partial class AnaForm : Form
     {
-        KafeVeri db = new KafeVeri();
+        KafeVeri db;
 
         public AnaForm()
         {
+            VeriOku();
             InitializeComponent();
-            OrnekUrunleriYukle();
+            // OrnekUrunleriYukle();
             MasalariOlustur();
         }
 
@@ -52,7 +55,7 @@ namespace CafeBoost.UI
             for (int i = 1; i <= db.MasaAdet; i++)
             {
                 lvi = new ListViewItem("Masa " + i);
-                lvi.ImageKey = "bos";
+                lvi.ImageKey = db.AktifSiparisler.Any(x => x.MasaNo == i) ? "dolu" : "bos";
                 lvi.Tag = i;
                 lvwMasalar.Items.Add(lvi);
             }
@@ -121,6 +124,30 @@ namespace CafeBoost.UI
                     lvi.ImageKey = "dolu";
                 }
             }
+        }
+
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VeriKaydet();
+        }
+
+        private void VeriOku()
+        {
+            try
+            {
+                string json = File.ReadAllText("veri.json");
+                db = JsonConvert.DeserializeObject<KafeVeri>(json);
+            }
+            catch (Exception)
+            {
+                db = new KafeVeri();
+            }
+        }
+
+        private void VeriKaydet()
+        {
+            string json = JsonConvert.SerializeObject(db, Formatting.Indented);
+            File.WriteAllText("veri.json", json);
         }
     }
 }
