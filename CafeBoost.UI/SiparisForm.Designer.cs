@@ -42,11 +42,11 @@
             this.btnOdemeAl = new System.Windows.Forms.Button();
             this.btnAnasayfa = new System.Windows.Forms.Button();
             this.dgvSiparisDetaylar = new System.Windows.Forms.DataGridView();
-            this.btnMasaTasi = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMasaTasi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSiparisDetaylar)).BeginInit();
             this.SuspendLayout();
@@ -125,10 +125,12 @@
             // cboMasalar
             // 
             this.cboMasalar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMasalar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMasalar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cboMasalar.FormattingEnabled = true;
             this.cboMasalar.Location = new System.Drawing.Point(565, 36);
             this.cboMasalar.Name = "cboMasalar";
-            this.cboMasalar.Size = new System.Drawing.Size(121, 32);
+            this.cboMasalar.Size = new System.Drawing.Size(121, 28);
             this.cboMasalar.TabIndex = 7;
             // 
             // nudAdet
@@ -217,17 +219,6 @@
             this.dgvSiparisDetaylar.TabIndex = 14;
             this.dgvSiparisDetaylar.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvSiparisDetaylar_UserDeletingRow);
             // 
-            // btnMasaTasi
-            // 
-            this.btnMasaTasi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMasaTasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnMasaTasi.Location = new System.Drawing.Point(692, 36);
-            this.btnMasaTasi.Name = "btnMasaTasi";
-            this.btnMasaTasi.Size = new System.Drawing.Size(75, 32);
-            this.btnMasaTasi.TabIndex = 15;
-            this.btnMasaTasi.Text = "TAŞI";
-            this.btnMasaTasi.UseVisualStyleBackColor = true;
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "UrunAd";
@@ -255,6 +246,18 @@
             this.Column4.HeaderText = "Tutar";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            // 
+            // btnMasaTasi
+            // 
+            this.btnMasaTasi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMasaTasi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnMasaTasi.Location = new System.Drawing.Point(692, 36);
+            this.btnMasaTasi.Name = "btnMasaTasi";
+            this.btnMasaTasi.Size = new System.Drawing.Size(75, 28);
+            this.btnMasaTasi.TabIndex = 15;
+            this.btnMasaTasi.Text = "TAŞI";
+            this.btnMasaTasi.UseVisualStyleBackColor = true;
+            this.btnMasaTasi.Click += new System.EventHandler(this.btnMasaTasi_Click);
             // 
             // SiparisForm
             // 

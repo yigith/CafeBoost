@@ -25,6 +25,7 @@ Siparis
 SiparisDurum (Aktif = 0, Odendi = 1, Iptal = 2)
 
 KafeVeri
+- MasaAdet (int)
 - Urunler (List<Urun>)
 - AktifSiparisler (List<Siparis>)
 - GecmisSiparisler (List<Siparis>)

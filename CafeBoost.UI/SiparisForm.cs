@@ -15,16 +15,19 @@ namespace CafeBoost.UI
     {
         private readonly KafeVeri db = new KafeVeri();
         private readonly Siparis siparis;
+        private readonly AnaForm anaForm;
         private readonly BindingList<SiparisDetay> blSiparisDetaylar;
 
-        public SiparisForm(KafeVeri kafeVeri, Siparis siparis)
+        public SiparisForm(KafeVeri kafeVeri, Siparis siparis, AnaForm anaForm)
         {
             // constructor parametresi olarak gelen bu nesneleri
             // daha sonra da erişebileceğimiz field'lara aktarıyoruz
             db = kafeVeri;
             this.siparis = siparis;
+            this.anaForm = anaForm;
             InitializeComponent();
             dgvSiparisDetaylar.AutoGenerateColumns = false;
+            MasalariListele();
             UrunleriListele();
             MasaNoGuncelle();
             OdemeTutariGuncelle();
@@ -32,6 +35,19 @@ namespace CafeBoost.UI
             blSiparisDetaylar = new BindingList<SiparisDetay>(siparis.SiparisDetaylar);
             blSiparisDetaylar.ListChanged += BlSiparisDetaylar_ListChanged;
             dgvSiparisDetaylar.DataSource = blSiparisDetaylar;
+        }
+
+        private void MasalariListele()
+        {
+            cboMasalar.Items.Clear();
+
+            for (int i = 1; i <= db.MasaAdet; i++)
+            {
+                if (!db.AktifSiparisler.Any(x => x.MasaNo == i))
+                {
+                    cboMasalar.Items.Add(i);
+                }
+            }
         }
 
         private void BlSiparisDetaylar_ListChanged(object sender, ListChangedEventArgs e)
@@ -114,6 +130,17 @@ namespace CafeBoost.UI
             db.GecmisSiparisler.Add(siparis);
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void btnMasaTasi_Click(object sender, EventArgs e)
+        {
+            if (cboMasalar.SelectedIndex < 0) return;
+            int kaynak = siparis.MasaNo;
+            int hedef = (int)cboMasalar.SelectedItem;
+            siparis.MasaNo = hedef;
+            anaForm.MasaTasi(kaynak, hedef);
+            MasaNoGuncelle();
+            MasalariListele();
         }
     }
 }
