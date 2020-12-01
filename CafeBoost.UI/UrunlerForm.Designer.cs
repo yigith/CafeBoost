@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUrunAd = new System.Windows.Forms.TextBox();
@@ -36,7 +37,7 @@
             this.btnUrunEkle = new System.Windows.Forms.Button();
             this.dgvUrunler = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmBirimFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudBirimFiyat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUrunler)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             // nudBirimFiyat
             // 
+            this.nudBirimFiyat.DecimalPlaces = 2;
             this.nudBirimFiyat.Location = new System.Drawing.Point(210, 37);
             this.nudBirimFiyat.Name = "nudBirimFiyat";
             this.nudBirimFiyat.Size = new System.Drawing.Size(128, 29);
@@ -98,13 +100,15 @@
             this.dgvUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUrunler.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2});
+            this.clmBirimFiyat});
             this.dgvUrunler.Location = new System.Drawing.Point(12, 71);
             this.dgvUrunler.MultiSelect = false;
             this.dgvUrunler.Name = "dgvUrunler";
             this.dgvUrunler.Size = new System.Drawing.Size(550, 322);
             this.dgvUrunler.TabIndex = 5;
+            this.dgvUrunler.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunler_CellValidated);
             this.dgvUrunler.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvUrunler_CellValidating);
+            this.dgvUrunler.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvUrunler_UserDeletingRow);
             // 
             // Column1
             // 
@@ -113,12 +117,14 @@
             this.Column1.Name = "Column1";
             this.Column1.Width = 109;
             // 
-            // Column2
+            // clmBirimFiyat
             // 
-            this.Column2.DataPropertyName = "BirimFiyat";
-            this.Column2.HeaderText = "Birim Fiyatı";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.clmBirimFiyat.DataPropertyName = "BirimFiyat";
+            dataGridViewCellStyle1.Format = "₺0.00";
+            this.clmBirimFiyat.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clmBirimFiyat.HeaderText = "Birim Fiyatı";
+            this.clmBirimFiyat.Name = "clmBirimFiyat";
+            this.clmBirimFiyat.Width = 125;
             // 
             // errorProvider1
             // 
@@ -156,8 +162,8 @@
         private System.Windows.Forms.NumericUpDown nudBirimFiyat;
         private System.Windows.Forms.Button btnUrunEkle;
         private System.Windows.Forms.DataGridView dgvUrunler;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmBirimFiyat;
     }
 }
