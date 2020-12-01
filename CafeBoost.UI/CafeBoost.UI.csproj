@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CafeBoost.Data\CafeBoost.Data.csproj">
-      <Project>{50759ff9-5ffc-417e-81dc-957354a9c5e7}</Project>
+      <Project>{63eeb4f4-4c1d-47d0-8530-1822946aa5d9}</Project>
       <Name>CafeBoost.Data</Name>
     </ProjectReference>
   </ItemGroup>

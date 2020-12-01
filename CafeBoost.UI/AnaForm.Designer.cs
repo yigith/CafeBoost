@@ -17,6 +17,10 @@
             {
                 components.Dispose();
             }
+            if (disposing)
+            {
+                db.Dispose();
+            }
             base.Dispose(disposing);
         }
 
@@ -63,6 +67,7 @@
             // lvwMasalar
             // 
             this.lvwMasalar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvwMasalar.HideSelection = false;
             this.lvwMasalar.Location = new System.Drawing.Point(0, 24);
             this.lvwMasalar.Name = "lvwMasalar";
             this.lvwMasalar.Size = new System.Drawing.Size(683, 426);
@@ -80,7 +85,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "AnaForm";
             this.Text = "Cafe Boost";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AnaForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

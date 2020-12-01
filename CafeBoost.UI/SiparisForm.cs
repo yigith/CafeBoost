@@ -15,15 +15,15 @@ namespace CafeBoost.UI
     {
         public event EventHandler<MasaTasimaEventArgs> MasaTasindi;
 
-        private readonly KafeVeri db = new KafeVeri();
+        private readonly CafeBoostContext db;
         private readonly Siparis siparis;
         private readonly BindingList<SiparisDetay> blSiparisDetaylar;
 
-        public SiparisForm(KafeVeri kafeVeri, Siparis siparis)
+        public SiparisForm(CafeBoostContext cafeBoostContext, Siparis siparis)
         {
             // constructor parametresi olarak gelen bu nesneleri
             // daha sonra da erişebileceğimiz field'lara aktarıyoruz
-            db = kafeVeri;
+            db = cafeBoostContext;
             this.siparis = siparis;
             InitializeComponent();
             dgvSiparisDetaylar.AutoGenerateColumns = false;
@@ -32,7 +32,7 @@ namespace CafeBoost.UI
             MasaNoGuncelle();
             OdemeTutariGuncelle();
 
-            blSiparisDetaylar = new BindingList<SiparisDetay>(siparis.SiparisDetaylar);
+            blSiparisDetaylar = new BindingList<SiparisDetay>(siparis.SiparisDetaylar.ToList());
             blSiparisDetaylar.ListChanged += BlSiparisDetaylar_ListChanged;
             dgvSiparisDetaylar.DataSource = blSiparisDetaylar;
         }
@@ -43,7 +43,7 @@ namespace CafeBoost.UI
 
             for (int i = 1; i <= db.MasaAdet; i++)
             {
-                if (!db.AktifSiparisler.Any(x => x.MasaNo == i))
+                if (!db.Siparisler.Any(x => x.MasaNo == i && x.Durum == SiparisDurum.Aktif))
                 {
                     cboMasalar.Items.Add(i);
                 }
@@ -126,8 +126,7 @@ namespace CafeBoost.UI
             siparis.OdenenTutar = odenenTutar;
             siparis.KapanisZamani = DateTime.Now;
             siparis.Durum = siparisDurum;
-            db.AktifSiparisler.Remove(siparis);
-            db.GecmisSiparisler.Add(siparis);
+            db.SaveChanges();
             DialogResult = DialogResult.OK;
             Close();
         }

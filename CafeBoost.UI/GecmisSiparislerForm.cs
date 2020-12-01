@@ -13,13 +13,13 @@ namespace CafeBoost.UI
 {
     public partial class GecmisSiparislerForm : Form
     {
-        private readonly KafeVeri db;
+        private readonly CafeBoostContext db;
 
-        public GecmisSiparislerForm(KafeVeri kafeVeri)
+        public GecmisSiparislerForm(CafeBoostContext cafeBoostContext)
         {
-            db = kafeVeri;
+            db = cafeBoostContext;
             InitializeComponent();
-            dgvSiparisler.DataSource = db.GecmisSiparisler;
+            dgvSiparisler.DataSource = db.Siparisler.Where(x => x.Durum != SiparisDurum.Aktif).ToList();
         }
 
         private void dgvSiparisler_SelectionChanged(object sender, EventArgs e)

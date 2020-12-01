@@ -13,13 +13,13 @@ namespace CafeBoost.UI
 {
     public partial class UrunlerForm : Form
     {
-        private readonly KafeVeri db;
+        private readonly CafeBoostContext db;
         BindingList<Urun> blUrunler;
 
-        public UrunlerForm(KafeVeri kafeVeri)
+        public UrunlerForm(CafeBoostContext cafeBoostContext)
         {
-            db = kafeVeri;
-            blUrunler = new BindingList<Urun>(db.Urunler);
+            db = cafeBoostContext;
+            blUrunler = new BindingList<Urun>(db.Urunler.ToList());
             InitializeComponent();
             dgvUrunler.DataSource = blUrunler;
         }
